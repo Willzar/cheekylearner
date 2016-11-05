@@ -60,7 +60,7 @@
 			/*	Get a random car from the list and use it for this entry. */
 			$scope.currentCar = $scope.getRandom.car();
 			NewEntry.odStart = $scope.currentCar.odometer;
-			$scope.currentCar.odometer += (($scope.TripDuration / 10 ) * 6);
+			$scope.currentCar.odometer += Math.round((($scope.TripDuration / 10 ) * 6)/(Math.random() + 1));
 			NewEntry.odEnd = $scope.currentCar.odometer;
 		
 			/*	After the entry has been generated make sure subsequent entries know they are not the first
@@ -198,9 +198,11 @@
 					var HourTripProbability =  Math.floor((Math.random() * 3) + 1);
 
 					if(HourTripProbability < 3)
-						return Math.floor((Math.random() * 11) + 2) * 5; // 11 * 5. This randomizes betweeb 10 and 55 minutes
+						//return Math.floor((Math.random() * 11) + 2) * (Math.random() * 5 + 1); // 11 * 5. This randomizes betweeb 10 and 55 minutes
+						return Math.floor(Math.random() * 60 + 10);
 					else
-						return Math.floor((Math.random() * 20) + 2) * 5; // 20 * 5. This randomizes betweeb 10 and 100 minutes
+						//return Math.floor((Math.random() * 20) + 2) * (Math.random() * 5 + 1); // 20 * 5. This randomizes betweeb 10 and 100 minutes
+						return Math.floor(Math.random() * 90 + 10);
 							
 				},
 				traffic: function(){
